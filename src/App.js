@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import NavBar from './components/NavBar'
+import Main from './components/Main'
 
 const url = "http://localhost:3000";
 
@@ -61,10 +61,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-      <NavBar
+      <Main
       handleLogin={this.handleLogin}
       loggedInStatus={this.state.loggedInStatus}
-      handleLogout={this.handleLogout}/>
+      handleLogout={this.handleLogout}
+      user={this.state.user}/>
       </div>
     );
   }

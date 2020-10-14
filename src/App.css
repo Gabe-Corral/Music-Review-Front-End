@@ -96,3 +96,137 @@ body {
   cursor: pointer;
   width: 100%;
 }
+
+.reviews {
+
+}
+
+.review-container {
+  float: none;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  border: 1px solid #ddd;
+  width: 25%;
+  height: 25%;
+  background-color: white;
+}
+
+.review-container .img-con {
+  flex: 0 0 150px;
+}
+
+.review-container .img-con img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  max-height: 100px;
+  max-width: 100px;
+  height: 100px;
+  width: 100px;
+}
+
+.review-container .content {
+  padding-left: 20px;
+}
+
+.review-container:hover {
+  background-color: lightgrey;
+}
+
+.all-review-container {
+  float: none;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  border: 1px solid #ddd;
+  width: 40%;
+  height: 40%;
+  background-color: white;
+  margin: auto;
+}
+
+.all-review-container .img-con {
+  flex: 0 0 150px;
+}
+
+.all-review-container .img-con img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  max-height: 100px;
+  max-width: 100px;
+  height: 100px;
+  width: 100px;
+}
+
+.all-review-container .content {
+  padding-left: 20px;
+}
+
+.all-review-container:hover {
+  background-color: lightgrey;
+}
+
+.review-page-container {
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  display: flex;
+  border: 1px solid #ddd;
+  width: 60%;
+  height: 60%;
+  background-color: white;
+  margin: auto;
+}
+
+.review-page-container .review-page-header {
+}
+
+.review-page-container .review-page-header .center{
+  text-align: center;
+}
+
+.review-page-container .review-page-header img {
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  height: 150px;
+  width: 150px;
+}
+
+.review-page-container .review-page-header .review-header-contents {
+  text-align: center;
+}
+
+.review-page-container .full-review {
+  float: none;
+  padding: 5px;
+  box-sizing: border-box;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background-color: white;
+  margin: auto;
+}
+
+/* .nav-bar .topnav .hidden-menu {
+  display: none;
+} */
+
+.search-bar {
+  width: 30%;
+}
+
+.search-table {
+  border-radius: 5px;
+  width: 30%; /* Full-width */
+  border: 1px solid #ddd; /* Add a grey border */
+  font-size: 18px; /* Increase font-size */
+  float: right;
+  padding: 6px;
+  margin-top: 40px;
+  background-color: white;
+  margin-right: -390px;
+  display: block;
+}
