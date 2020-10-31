@@ -38,7 +38,6 @@ class EditReview extends React.Component {
       body: JSON.stringify(newReview)
     })
     this.props.history.push('/reviews');
-    window.location.reload(false)
   }
 
   handleChange = (e) => {

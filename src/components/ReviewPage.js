@@ -7,6 +7,7 @@ const ReviewPage = (props) => {
   const [comments, setComments] = useState();
   const [commentForm, setCommentForm] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [author, setAuthor] = useState();
   const history = useHistory();
   const url = "http://localhost:3000";
   const review = JSON.parse(localStorage.getItem("currentReview")).currentReview;
@@ -16,13 +17,14 @@ const ReviewPage = (props) => {
       const id = review.id;
       fetch(`${url}/getcomments/${id}`)
         .then(res => res.json())
-        .then(comments => {
-          setComments(comments)
-      })
+        .then(comments => setComments(comments))
+
+      fetch(`${url}/getuserinfo/${id}`)
+      .then(res => res.json())
+      .then(author => setAuthor(author))
     }
     setLoading(false);
-  }, [loading, setLoading])
-
+  }, [loading, setLoading, review.id])
 
   const handleClick = () => {
     const artist = review.artist.split(" ").join("").toLowerCase();
@@ -63,6 +65,11 @@ const ReviewPage = (props) => {
     history.push(`username/${props.user.username}`)
   }
 
+  const handleUserProfile = () => {
+    props.authorProfile(author)
+    history.push(`/username/${author.username}`)
+  }
+
   return (
     <div>
     {props.user.id === review.user_id ? (
@@ -83,6 +90,11 @@ const ReviewPage = (props) => {
       <h3 className="artist-name"
       onClick={handleClick}>{review.artist}</h3>
       <h3>{review.rating}/10</h3>
+      <h3 className="author"
+      onClick={handleUserProfile}>
+      {author !== undefined ? (
+        author.username
+      ) : ""}</h3>
       </div>
       <p className="full-review">
       {review.review}

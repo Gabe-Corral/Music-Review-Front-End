@@ -29,7 +29,9 @@ class Main extends React.Component {
       showMore: 10,
       searchBar: false,
       showDropDowm: false,
-      sortType: "rating"
+      sortType: "rating",
+      authorPage: false,
+      author: {}
     }
 
     this.handleSuccessfulAuth = this.handleSuccessfulAuth.bind(this)
@@ -91,6 +93,10 @@ class Main extends React.Component {
   sortingReviews = (e) => {
     e.preventDefault()
     this.setState({ sortType: e.target.value })
+  }
+
+  authorProfile = (author) => {
+    this.setState({ authorPage: true, author: author })
   }
 
   render() {
@@ -164,7 +170,7 @@ class Main extends React.Component {
       <Route path="/review/:id">
         <EditReview
         currentReview={
-          JSON.parse(localStorage.getItem("currentReview")).currentReview
+          this.state.currentReview
         } />
       </Route>
       <Route path="/artist/:name">
@@ -173,13 +179,20 @@ class Main extends React.Component {
         getFullReview={this.getFullReview}/>
       </Route>
       <Route path="/username/:username">
-      <Profile user={this.props.user}
-      getFullReview={this.getFullReview}/>
+      {this.state.authorPage ? (
+        <Profile user={this.state.author}
+        currentViewer={this.props.user}
+        getFullReview={this.getFullReview}/>
+      ) : (
+        <Profile user={this.props.user}
+        getFullReview={this.getFullReview}/>
+      )}
       </Route>
       <Route path="/:id">
         <ReviewPage
         setCurrentArtist={this.setCurrentArtist}
-        user={this.props.user}/>
+        user={this.props.user}
+        authorProfile={this.authorProfile}/>
       </Route>
       </Switch>
       </Router>
