@@ -16,6 +16,18 @@ const Profile = (props) => {
           setReviews(res)
           setLoading(false)
       })
+      const viewer = props.currentViewer
+      if (viewer !== undefined) {
+        fetch(`${url}/followers/${viewer.id}`)
+        .then(res => res.json())
+        .then(followers => {
+          followers.forEach(f => {
+            if (f.id === user.id) {
+              setFollowing(true)
+            }
+          })
+        })
+      }
     }
   })
 
@@ -29,17 +41,30 @@ const Profile = (props) => {
         follower_id: props.currentViewer.id
       })
     })
+    setFollowing(true)
   }
 
   return (
     <div className="profile-container">
       <h2>{user.username}</h2>
-      {props.currentViewer !== undefined &&
-        props.user.id !== props.currentViewer.id ? (
-        <div className="follow-buttons">
-          <button onClick={handleFollow}>Follow</button>
-        </div>
-      ) : ""}
+
+        {(() => {
+          if (props.currentViewer !== undefined &&
+            props.user.id !== props.currentViewer.id
+          && following !== true) {
+              return (
+                <div className="follow-buttons">
+                <button onClick={handleFollow}>Follow</button>
+                </div>)
+            } else if (following === true) {
+              return (
+                <div className="follow-buttons">
+                <button >Following</button>
+                </div>
+              )
+            }
+        })()
+      }
 
         <div className="user-reviews">
             <h3>Reviews:</h3>

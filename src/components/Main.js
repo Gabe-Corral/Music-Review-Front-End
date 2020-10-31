@@ -1,15 +1,16 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import Login from './Login'
-import Review from './Album'
-import ReviewPage from './ReviewPage'
-import AllReviews from './AllReviews'
-import WriteAReview from './WriteAReview'
-import Search from './Search'
-import ArtistPage from './ArtistPage'
+import Login from './Login';
+import Review from './Album';
+import ReviewPage from './ReviewPage';
+import AllReviews from './AllReviews';
+import WriteAReview from './WriteAReview';
+import Search from './Search';
+import ArtistPage from './ArtistPage';
 import { FaSearch } from 'react-icons/fa';
-import Profile from './Profile'
-import EditReview from './EditReview'
+import Profile from './Profile';
+import EditReview from './EditReview';
+import Activity from './Activity';
 
 const url = "http://localhost:3000";
 
@@ -113,6 +114,7 @@ class Main extends React.Component {
         <a href="/write">Write A Review</a>
       {this.props.loggedInStatus ? (
         <div>
+        <a href="/activity">Activity</a>
         <a href={`/username/${this.props.user.username}`}>Profile</a>
         <a onClick={this.props.handleLogout} href="/">Logout</a>
         </div>
@@ -164,8 +166,11 @@ class Main extends React.Component {
         </div>
       </div>
       </Route>
-      <Route exect path="/write">
+      <Route exact path="/write">
         <WriteAReview user={this.props.user}/>
+      </Route>
+      <Route exact path="/activity">
+        <Activity />
       </Route>
       <Route path="/review/:id">
         <EditReview

@@ -602,10 +602,8 @@ body {
 
 .description {
   display: inline-block;
-  clear: both;
-  float: right;
-  margin-right: 200px;
-  margin-top: -750px;
+  margin-left: 30%;
+  margin-right: 30%;
   box-sizing: border-box;  box-sizing: border-box;
   border-radius: 4px;
   display: inline-block;

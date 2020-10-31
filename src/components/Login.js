@@ -51,7 +51,6 @@ class Login extends React.Component {
     e.preventDefault()
     let username = e.target.username.value;
     let password = e.target.password.value;
-    console.log(username, password)
     fetch("http://localhost:3000/sessions", {
       headers: {
         'Accept': 'application/json',
