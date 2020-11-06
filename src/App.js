@@ -19,7 +19,7 @@ class App extends React.Component {
   }
 
   checkLoginStatus() {
-    fetch("http://localhost:3000/logged_in", {
+    fetch(`${url}/logged_in`, {
       method: 'GET',
       credentials: 'include',
     })
